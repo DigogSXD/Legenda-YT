@@ -29,3 +29,17 @@ Antes de rodar o script, você precisa ter instalado no seu computador:
 
 ```bash
 pip install openai-whisper yt-dlp google-generativeai moviepy imageio-ffmpeg numpy
+```
+
+(Opcional) Se você tiver uma GPU NVIDIA, instale o PyTorch com suporte a CUDA para o Whisper rodar muito mais rápido.⚙️ Configuração (Obrigatório)Antes de executar, você precisa editar o início do código Python (main.py):1. API Key do Google (Gemini)Obtenha sua chave gratuita no Google AI Studio.Cole a chave na variável API_KEY:PythonAPI_KEY = "SUA_CHAVE_AQUI"
+2. Caminho do ImageMagickO MoviePy precisa saber onde o executável do ImageMagick está. Localize o arquivo magick.exe no seu computador e atualize a linha de configuração:Python# Exemplo (verifique o caminho real no seu PC):
+change_settings({"IMAGEMAGICK_BINARY": r"C:\Program Files\ImageMagick-7.1.2-Q16-HDRI\magick.exe"})
+🚀 Como UsarExecute o script no terminal:Bashpython seu_script.py
+O programa pedirá a URL do YouTube. Cole o link e aperte Enter.Aguarde o processo automático:⬇️ Baixando: O vídeo é salvo temporariamente.🧠 Lendo: O Whisper transcreve o áudio.🤖 Analisando: O Gemini escolhe os melhores cortes.✂️ Editando: O MoviePy gera os arquivos finais.Os vídeos prontos aparecerão na pasta clips_virais/ criada automaticamente.📂 Estrutura de SaídaPlaintext/pasta_do_projeto
+  ├── video_temp.mp4          (Vídeo original baixado)
+  ├── clips_virais/
+  │   ├── clip_1_Titulo_Viral.mp4
+  │   ├── clip_2_Outro_Momento.mp4
+  │   └── clip_3_Conclusao.mp4
+  └── seu_script.py
+⚠️ Solução de Problemas ComunsErroSoluçãoImageMagick not foundVerifique se o caminho no change_settings está correto e aponta para magick.exe.AttributeError: 'NoneType' objectA IA do Google pode ter falhado ao retornar o JSON. Tente rodar novamente ou verifique se sua API Key é válida.MoviePy TextClip ErrorGeralmente é problema com o ImageMagick. Tente reinstalá-lo ou verificar as permissões de pasta.📝 LicençaEste projeto foi desenvolvido para fins educacionais e de automação de conteúdo.Disclaimer: O uso de vídeos de terceiros deve respeitar as leis de direitos autorais da sua região e as políticas da plataforma (YouTube).
